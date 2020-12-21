@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+int pairSum(int *arr, int n) {
+    int count =0;
+    sort(arr,arr+n);
+	for(int i=0;i<n;i++)
+    {
+        if(arr[i]>0)
+        {
+            break;
+        }
+        else
+        {
+            int r = n-1;
+            while(r>i)
+            {
+                if(arr[i]+arr[r] < 0)
+                {
+                    break;
+                }
+                else if(arr[i] +arr[r] ==0)
+                {
+                    count++;
+                    r--;
+                }
+                else
+                {
+                    r--;
+                }
+            }
+        }
+    }
+    return count;
+    
+    
+    int main() {
+    int n;
+    cin >> n;
+
+    int* arr = new int[n];
+
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
+    }
+
+    cout << pairSum(arr, n);
+
+    delete[] arr;
+}
