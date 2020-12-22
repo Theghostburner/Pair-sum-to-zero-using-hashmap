@@ -1,0 +1,41 @@
+int pairSum(int *arr, int n) {
+
+    unordered_map<int,int> m;
+    int count =0;
+    for(int i=0;i<n;i++)
+    {
+        unordered_map<int,int>::iterator itr = m.find((-1)*(arr[i]));
+        if(itr != m.end())
+        {
+            int t = (*itr).second;
+            while(t--)
+            {
+            	count++;
+            }
+            m[arr[i]]++;
+        }
+        else
+        {
+            m[arr[i]]++;
+        }
+    }
+    return count;
+}
+using namespace std;
+
+#include "solution.h"
+
+int main() {
+    int n;
+    cin >> n;
+
+    int* arr = new int[n];
+
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
+    }
+
+    cout << pairSum(arr, n);
+
+    delete[] arr;
+}
